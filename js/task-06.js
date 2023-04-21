@@ -1,13 +1,17 @@
 const textInput = document.getElementById("validation-input");
 
-textInput.addEventListener("blur", () => {
+function validateInput(input) {
   const validSimbol = parseInt(textInput.getAttribute("data-length"));
 
-  if (textInput.value.length === validSimbol) {
+  if (input.length === validSimbol) {
     textInput.classList.add("valid");
     textInput.classList.remove("invalid");
   } else {
     textInput.classList.add("invalid");
     textInput.classList.remove("valid");
   }
+}
+
+textInput.addEventListener("blur", () => {
+  validateInput(textInput.value);
 });

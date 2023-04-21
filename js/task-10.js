@@ -1,25 +1,31 @@
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
-    .padStart(6, 0)}`;
+    .padStart(6, "0")}`;
 }
 
 const btnCreate = document.querySelector(`[data-create]`);
 const btnDestroy = document.querySelector(`[data-destroy]`);
-const numberElInput = document.querySelector("number");
+const numberElInput = document.querySelector('[type="number"]');
 const boxesEl = document.getElementById("boxes");
 
-function createBoxes(amount) {
-  let size = 30;
+function createBoxes() {
+  const amount = Number(numberElInput.value);
 
-  for (let i = 0; i < amount; i++) {
-    const box = document.createElement("div");
-    box.style.width = `${size}px`;
-    box.style.height = `${size}px`;
-    box.style.backgroundColor = getRandomHexColor();
+  if (!isNaN(amount)) {
+    let size = 30;
 
-    boxesEl.append(box);
-    size += 10;
+    for (let i = 0; i < amount; i++) {
+      const box = document.createElement("div");
+      box.style.width = `${size}px`;
+      box.style.height = `${size}px`;
+      box.style.backgroundColor = getRandomHexColor();
+
+      boxesEl.append(box);
+      size += 10;
+    }
+  } else {
+    alert("Please enter a valid number");
   }
 }
 
