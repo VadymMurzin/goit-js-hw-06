@@ -27,5 +27,5 @@ function destroyBoxes() {
   boxesEl.innerHTML = "";
 }
 
-btnCreate.addEventListener("click", createBoxes(numberElInput.value));
+btnCreate.addEventListener("click", createBoxes);
 btnDestroy.addEventListener("click", destroyBoxes);
